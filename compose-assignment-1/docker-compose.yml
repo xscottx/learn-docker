@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  cms:
+    image: drupal
+    ports:
+      - '8080:80' # enter as 8080, exposed port of 80 on cms
+    volumes:
+      - drupal-modules:/var/www/html/modules \
+      - drupal-profiles:/var/www/html/profiles \
+      - drupal-sites:/var/www/html/sites \
+      - drupal-themes:/var/www/html/themes
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=example
+
+volumes:
+  drupal-modules:
+  drupal-profiles:
+  drupal-sites:
+  drupal-themes:
